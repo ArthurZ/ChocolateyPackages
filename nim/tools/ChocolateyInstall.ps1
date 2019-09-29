@@ -1,3 +1,10 @@
+# File:          ChocolateyInstall.ps1
+# Description:   Installation of Nim programming language
+# Author:		     Arthur Zubarev
+# Email:         arthurz at gmx dot com
+# Revision:	     0.0.1
+# Last Modified: Sun Sep 29 2019 16:16 PM UTC
+
 $ErrorActionPreference = 'Stop'
 
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
@@ -15,4 +22,20 @@ $packageArgs = @{
   checksumtype64 = 'sha256'
 }
 
+Write-Output "The installation checks for the presence of a C compiler and can install MingW, the GNU C compiler for Windows."
+
 Install-ChocolateyZipPackage @packageArgs
+
+Write-Output "The installer will now attempt to register Nim on your PATH."
+
+$FinishExe = (Get-ChildItem $toolsDir -Filter 'finish.exe').FullName
+
+$startProcessArgsFE = @{
+      PassThru = $true
+      NoNewWindow = $true
+      FilePath = $FinishExe
+}
+
+$piFE = Start-Process @startProcessArgsFE
+$piFE.WaitForExit()
+exit $piFE.ExitCode
