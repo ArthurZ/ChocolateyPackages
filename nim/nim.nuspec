@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>nim</id>
-    <title>Nim Programming Language</title>
+    <title>Nim</title>
     <version>1.0</version>
     <authors>Andreas Rumpf</authors>
     <owners>pine613, sitri, ArthurZ</owners>
