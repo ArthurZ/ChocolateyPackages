@@ -1,1 +1,6 @@
-nimcache/
+*.nupkg
+*.log
+*.log.full
+jobs.db
+_output
+*.exe
