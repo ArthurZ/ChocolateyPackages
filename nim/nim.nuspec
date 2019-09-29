@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one.-->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>nim</id>
+    <title>Nim Compiler</title>
+    <version>1.0</version>
+    <authors>Andreas Rumpf</authors>
+    <owners>pine613, sitri, ArthurZ</owners>
+    <summary>Nim is a statically typed compiled systems programming language.</summary>
+    <description>Nim is a statically typed compiled systems programming language. It combines successful concepts from mature languages like Python, Ada and Modula.</description>
+    <projectUrl>https://nim-lang.org</projectUrl>
+    <tags>nim programming language</tags>
+    <copyright>Copyright (c) 2006-2019 Andreas Rumpf. All rights reserved.</copyright>
+    <licenseUrl>https://nim-lang.org/faq.html</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>http://cdn.rawgit.com/pine613/chocolatey-packages/master/nim/nim.png</iconUrl>
+  </metadata>
+  <files>
+    <file src="tools\**\*.ps1" target="tools" />
+  </files>
+</package>
