@@ -26,16 +26,22 @@ Write-Output "The installation checks for the presence of a C compiler and can i
 
 Install-ChocolateyZipPackage @packageArgs
 
-Write-Output "The installer will now attempt to register Nim on your PATH."
+Write-Output "The installer will now attempt to register Nim on your PATH." -ForegroundColor Green
 
-$FinishExe = (Get-ChildItem $toolsDir -Filter 'finish.exe').FullName
+$AllusrProf = Get-Childitem -Path Env:ALLUSERSPROFILE
+
+$FinishExe = "$AllusrProf\chocolatey\lib\nim\tools\nim-1.0.0\finish.exe"
+
+cd "$AllusrProf\chocolatey\lib\nim\tools\nim-1.0.0"
 
 $startProcessArgsFE = @{
-      PassThru = $true
-      NoNewWindow = $true
-      FilePath = $FinishExe
+      PassThru      = $true
+      NoNewWindow   = $true
+      FilePath      = $FinishExe
 }
 
 $piFE = Start-Process @startProcessArgsFE
 $piFE.WaitForExit()
 exit $piFE.ExitCode
+
+Write-Output "If you have previous versions of Nim on your PATH consider positioning them lower or deleting." -ForegroundColor Yellow
