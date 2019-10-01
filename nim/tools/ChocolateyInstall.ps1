@@ -1,6 +1,6 @@
 # File:          ChocolateyInstall.ps1
 # Description:   Installation of the Nim programming language
-# Author:		     Arthur Zubarev
+# Author:        Arthur Zubarev
 # Email:         arthurz at gmx dot com
 # Revision:	     0.0.3
 # Last Modified: Tue Oct 01 2019 1:40 PM UTC
