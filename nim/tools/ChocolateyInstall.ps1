@@ -1,9 +1,9 @@
 # File:          ChocolateyInstall.ps1
-# Description:   Installation of Nim programming language
+# Description:   Installation of the Nim programming language
 # Author:		     Arthur Zubarev
 # Email:         arthurz at gmx dot com
-# Revision:	     0.0.1
-# Last Modified: Sun Sep 29 2019 16:16 PM UTC
+# Revision:	     0.0.3
+# Last Modified: Tue Oct 01 2019 1:40 PM UTC
 
 $ErrorActionPreference = 'Stop'
 
@@ -26,22 +26,8 @@ Write-Output "The installation checks for the presence of a C compiler and can i
 
 Install-ChocolateyZipPackage @packageArgs
 
-Write-Output "The installer will now attempt to register Nim on your PATH." -ForegroundColor Green
+$AllUsrProf = Get-Childitem -Path Env:ALLUSERSPROFILE
+$FinishExe = "$($AllUsrProf.Value)\chocolatey\lib\nim\tools\nim-1.0.0\finish.exe"
 
-$AllusrProf = Get-Childitem -Path Env:ALLUSERSPROFILE
-
-$FinishExe = "$AllusrProf\chocolatey\lib\nim\tools\nim-1.0.0\finish.exe"
-
-cd "$AllusrProf\chocolatey\lib\nim\tools\nim-1.0.0"
-
-$startProcessArgsFE = @{
-      PassThru      = $true
-      NoNewWindow   = $true
-      FilePath      = $FinishExe
-}
-
-$piFE = Start-Process @startProcessArgsFE
-$piFE.WaitForExit()
-exit $piFE.ExitCode
-
-Write-Output "If you have previous versions of Nim on your PATH consider positioning them lower or deleting." -ForegroundColor Yellow
+Write-Output "Execute $FinishExe to attempt to register Nim 1.0.0 and its tools on your PATH."
+Write-Output "If you have previous version(s) of Nim on your PATH consider removing these entries."
